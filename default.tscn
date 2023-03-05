@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://qaxcru33xj6f"]
+[gd_scene load_steps=9 format=3 uid="uid://qaxcru33xj6f"]
 
 [ext_resource type="PackedScene" uid="uid://bwyeruv2ro15k" path="res://logic/tag/tag.tscn" id="1_2a5tl"]
+[ext_resource type="Script" path="res://inspector.gd" id="1_fgoep"]
 [ext_resource type="PackedScene" uid="uid://bvhnqspbysank" path="res://logic/mover/mover.tscn" id="1_lemwl"]
 [ext_resource type="PackedScene" uid="uid://c5vm81quyp7hx" path="res://logic/rotator/rotator.tscn" id="2_ebgxn"]
 [ext_resource type="PackedScene" uid="uid://3dtuo6fgluap" path="res://logic/tag_sensor/tag_sensor.tscn" id="4_tukjj"]
+[ext_resource type="PackedScene" uid="uid://ceiudnpb1edei" path="res://logic/follower/follower.tscn" id="5_pbobv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rf4el"]
 size = Vector2(127, 121)
@@ -12,6 +14,9 @@ size = Vector2(127, 121)
 size = Vector2(684, 20)
 
 [node name="Default" type="Node2D"]
+
+[node name="Inspector" type="Node2D" parent="."]
+script = ExtResource("1_fgoep")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2(203, 288)
@@ -28,7 +33,6 @@ label = "hello"
 target = NodePath("..")
 
 [node name="Mover" parent="RigidBody2D" node_paths=PackedStringArray("target") instance=ExtResource("1_lemwl")]
-force = Vector2(10, 2.08165e-12)
 target = NodePath("..")
 
 [node name="Rotator" parent="RigidBody2D" node_paths=PackedStringArray("target") instance=ExtResource("2_ebgxn")]
@@ -37,6 +41,17 @@ torque = 1000.0
 target = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_rf4el")
+
+[node name="RigidBody2D3" type="Area2D" parent="."]
+position = Vector2(371, 284)
+
+[node name="Follower" parent="RigidBody2D3" node_paths=PackedStringArray("target") instance=ExtResource("5_pbobv")]
+position = Vector2(-48, -43)
+label = "hello"
+target = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
 shape = SubResource("RectangleShape2D_rf4el")
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]

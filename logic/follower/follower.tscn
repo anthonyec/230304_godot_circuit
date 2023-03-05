@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceiudnpb1edei"]
+
+[ext_resource type="Script" path="res://logic/follower/follower.gd" id="1_sj8bp"]
+[ext_resource type="PackedScene" uid="uid://3dtuo6fgluap" path="res://logic/tag_sensor/tag_sensor.tscn" id="2_rujr5"]
+
+[node name="Follower" type="Node2D"]
+script = ExtResource("1_sj8bp")
+
+[node name="TagSensor" parent="." instance=ExtResource("2_rujr5")]
+visible = false
+
+[connection signal="area_entered" from="TagSensor" to="." method="_on_tag_sensor_area_entered"]
+[connection signal="area_exited" from="TagSensor" to="." method="_on_tag_sensor_area_exited"]

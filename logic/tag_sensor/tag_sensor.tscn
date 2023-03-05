@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_yy0ba"]
 radius = 100.0
 
-[node name="TagSensor" type="Node2D"]
+[node name="TagSensor" type="Node2D" groups=["logic"]]
 script = ExtResource("1_sjra3")
 
 [node name="Icon" type="Sprite2D" parent="."]

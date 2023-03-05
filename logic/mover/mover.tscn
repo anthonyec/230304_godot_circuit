@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://logic/mover/mover.gd" id="1_86i2h"]
 [ext_resource type="Texture2D" uid="uid://dgyqfh8pyvxu7" path="res://logic/mover/mover.svg" id="2_0gjls"]
 
-[node name="Mover" type="Node2D"]
+[node name="Mover" type="Node2D" groups=["logic"]]
 script = ExtResource("1_86i2h")
-props = Array[String](["is_local"])
+props = Array[String](["is_local", "force"])
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)

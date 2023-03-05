@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://logic/rotator/rotator.gd" id="1_hejyh"]
 [ext_resource type="Texture2D" uid="uid://78sngu2qsb0l" path="res://logic/rotator/rotater.svg" id="2_4aloe"]
 
-[node name="Rotator" type="Node2D"]
+[node name="Rotator" type="Node2D" groups=["logic"]]
 script = ExtResource("1_hejyh")
 
 [node name="Icon" type="Sprite2D" parent="."]
