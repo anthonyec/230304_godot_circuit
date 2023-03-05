@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwyeruv2ro15k"]
+
+[ext_resource type="Script" path="res://logic/tag/tag.gd" id="1_i5ful"]
+[ext_resource type="Texture2D" uid="uid://n1iupajl0yn8" path="res://logic/tag/tag.svg" id="2_k8i2x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3q8u"]
+radius = 8.0
+
+[node name="Tag" type="Area2D" groups=["tag"]]
+script = ExtResource("1_i5ful")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p3q8u")
+
+[node name="Tag" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_k8i2x")

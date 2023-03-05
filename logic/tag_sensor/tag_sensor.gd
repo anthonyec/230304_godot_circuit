@@ -1,0 +1,40 @@
+class_name TagSensor extends Logic
+
+@onready var area_collision: Area2D = $Area2D
+@onready var collision_shape: CollisionShape2D = $Area2D/CollisionShape2D
+@onready var icon_active: Sprite2D = $IconActive
+
+@export var radius: float = 100
+@export var label: String = ""
+
+var areas: Array[Node2D] = []
+
+func _ready() -> void:
+	super()
+	area_collision.connect("area_entered", on_area_enter)
+	area_collision.connect("area_exited", on_area_exit)
+	
+func _physics_process(_delta: float) -> void:
+	collision_shape.shape.radius = radius
+	
+	if not areas.is_empty():
+		activate()
+	else:
+		deactivate()
+
+func activate() -> void:
+	icon_active.visible = true
+
+func deactivate() -> void:
+	icon_active.visible = false
+
+func on_area_enter(area: Area2D) -> void:
+	if area.is_in_group("tag"):
+		if area.label == label:
+			areas.append(area)
+		
+func on_area_exit(area: Area2D) -> void:
+	if area.is_in_group("tag"):
+		if area.label == label:
+			var index = areas.find(area)
+			areas.remove_at(index)

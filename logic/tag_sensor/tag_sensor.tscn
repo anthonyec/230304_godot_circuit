@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://3dtuo6fgluap"]
+
+[ext_resource type="Script" path="res://logic/tag_sensor/tag_sensor.gd" id="1_sjra3"]
+[ext_resource type="Texture2D" uid="uid://c5bolvgiypiij" path="res://logic/tag_sensor/tag_sensor.svg" id="2_r4dbt"]
+[ext_resource type="Texture2D" uid="uid://bbg2dft88mqh3" path="res://logic/tag_sensor/tag_sensor_active.svg" id="3_kifd1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yy0ba"]
+radius = 100.0
+
+[node name="TagSensor" type="Node2D"]
+script = ExtResource("1_sjra3")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_r4dbt")
+
+[node name="IconActive" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_kifd1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_yy0ba")
